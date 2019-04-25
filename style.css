@@ -1,0 +1,15 @@
+/* RESET HYPERLINKS */
+body{
+    height: 100vh;
+    min-height: 640px;
+}
+a{
+    display: block;
+    text-decoration: none;
+    color: white;
+    
+}
+a:hover{
+    text-decoration: none;
+    color: white;
+}
