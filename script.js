@@ -7,7 +7,7 @@ let setUp = {
 
 
 //                                     After DOM loaded run app()
-window.addEventListener("onload", () => {
+window.addEventListener("load", () => {
     const showPosition = (position) => {
         setUp.myLatitude = position.coords.latitude;
         setUp.myLongitude = position.coords.longitude;
