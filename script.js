@@ -102,11 +102,11 @@ function app() {
     let map;
 
     const showPosition = (position) => {
-        alert("Dziala");
-        if (position) {
+        if (position.coords) {
             setUp.myLatitude = position.coords.latitude;
             setUp.myLongitude = position.coords.longitude;
         }
+
         map = L.map('mapid', {
             minZoom: 4,
         }).setView([setUp.myLatitude, setUp.myLongitude], 13);
@@ -122,10 +122,22 @@ function app() {
         });
     }
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showPosition, showPosition);
         console.log(setUp);
-    } else {
-        showPosition(undefined);
+    } else if (map == undefined) {
+        map = L.map('mapid', {
+            minZoom: 4,
+        }).setView([setUp.myLatitude, setUp.myLongitude], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        console.log(setUp);
+        //  add marker on map LISTENER
+        map.on("click", (e) => {
+            btnShowModal.click();
+            getMarkerCoord(e);
+        });
     }
 
 
