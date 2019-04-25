@@ -7,9 +7,20 @@ let setUp = {
 
 
 //                                     After DOM loaded run app()
-
+window.addEventListener("onload", () => {
+    const showPosition = (position) => {
+        setUp.myLatitude = position.coords.latitude;
+        setUp.myLongitude = position.coords.longitude;
+        console.log(setUp);
+    }
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+});
 window.addEventListener("DOMContentLoaded", app);
 function app() {
+
+
 
     // DOM elements
     const btnShowModal = document.querySelector(".showModal");
@@ -97,14 +108,7 @@ function app() {
 
     //                                   Check actual localization
 
-    const showPosition = (position) => {
-        setUp.myLatitude = position.coords.latitude;
-        setUp.myLongitude = position.coords.longitude;
-        console.log(setUp);
-    }
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    }
+
 
 
 
