@@ -101,7 +101,8 @@ function app() {
 
     let map;
 
-    const showPosition = (position = undefined) => {
+    const showPosition = (position) => {
+        alert("Dziala");
         if (position) {
             setUp.myLatitude = position.coords.latitude;
             setUp.myLongitude = position.coords.longitude;
@@ -124,7 +125,7 @@ function app() {
         navigator.geolocation.getCurrentPosition(showPosition);
         console.log(setUp);
     } else {
-        showPosition();
+        showPosition(undefined);
     }
 
 
