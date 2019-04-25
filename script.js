@@ -7,16 +7,7 @@ let setUp = {
 
 
 //                                     After DOM loaded run app()
-window.addEventListener("load", () => {
-    const showPosition = (position) => {
-        setUp.myLatitude = position.coords.latitude;
-        setUp.myLongitude = position.coords.longitude;
-        console.log(setUp);
-    }
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    }
-});
+
 window.addEventListener("DOMContentLoaded", app);
 function app() {
 
@@ -108,28 +99,44 @@ function app() {
 
     //                                   Check actual localization
 
+    let map;
 
+    const showPosition = (position) => {
+        if (position) {
+            setUp.myLatitude = position.coords.latitude;
+            setUp.myLongitude = position.coords.longitude;
+        }
+        map = L.map('mapid', {
+            minZoom: 4,
+        }).setView([setUp.myLatitude, setUp.myLongitude], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        console.log(setUp);
+        //  add marker on map LISTENER
+        map.on("click", (e) => {
+            btnShowModal.click();
+            getMarkerCoord(e);
+        });
+    }
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+        console.log(setUp);
+    } else {
+        showPosition();
+    }
 
 
 
     //          ADD and init LEAFLET MAP
 
     // init map
-    const map = L.map('mapid', {
-        minZoom: 4,
-    }).setView([setUp.myLatitude, setUp.myLongitude], 13);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
 
 
 
-    //  add marker on map LISTENER
-    map.on("click", (e) => {
-        btnShowModal.click();
-        getMarkerCoord(e);
-    });
+
+
 
 
 
