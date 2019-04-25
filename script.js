@@ -4,7 +4,11 @@
 let setUp = {
     myLatitude: 50.0, myLongitude: 20.0, myMarkers: []
 };
+
+
 //                                     After DOM loaded run app()
+window.addEventListener("DOMContentLoaded", app);
+
 window.addEventListener("DOMContentLoaded", app);
 function app() {
 
@@ -15,15 +19,7 @@ function app() {
     const txtDescribe = document.querySelector(".describe");
     const table = document.querySelector(".table__body");
 
-    //                                   Check actual localization
-    const showPosition = (position) => {
-        setUp.myLatitude = position.coords.latitude;
-        setUp.myLongitude = position.coords.longitude;
-        console.log(setUp);
-    }
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    }
+
 
 
     // DOM elements LISTENERS
@@ -100,12 +96,16 @@ function app() {
 
 
 
+    //                                   Check actual localization
 
-
-
-
-
-
+    const showPosition = (position) => {
+        setUp.myLatitude = position.coords.latitude;
+        setUp.myLongitude = position.coords.longitude;
+        console.log(setUp);
+    }
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
 
 
 
