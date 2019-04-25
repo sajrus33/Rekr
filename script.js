@@ -7,7 +7,6 @@ let setUp = {
 
 
 //                                     After DOM loaded run app()
-window.addEventListener("DOMContentLoaded", app);
 
 window.addEventListener("DOMContentLoaded", app);
 function app() {
