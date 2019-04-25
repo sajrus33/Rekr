@@ -101,7 +101,7 @@ function app() {
 
     let map;
 
-    const showPosition = (position) => {
+    const showPosition = (position = undefined) => {
         if (position) {
             setUp.myLatitude = position.coords.latitude;
             setUp.myLongitude = position.coords.longitude;
