@@ -80,12 +80,15 @@ function app() {
 
   const createTablePosition = name => {
     const newPosition = document.createElement("tr");
+
     // td name
     const newName = document.createElement("td");
     newName.innerText = name;
+
     //td X
     const newX = document.createElement("td");
     newX.innerText = setUp.myLongitude;
+
     //td Y
     const newY = document.createElement("td");
     newY.innerText = setUp.myLatitude;
@@ -94,12 +97,12 @@ function app() {
     newPosition.appendChild(newName);
     newPosition.appendChild(newX);
     newPosition.appendChild(newY);
+
     // table global, DOM element
     table.appendChild(newPosition);
   };
 
   //                                   Check actual localization
-
   let map;
 
   const showPosition = position => {
@@ -150,6 +153,7 @@ function app() {
   // get marker coord
   const getMarkerCoord = e => {
     let coord;
+
     //if its creating new marker
     if (e.latlng) {
       coord = e.latlng.toString().split(",");
