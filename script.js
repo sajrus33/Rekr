@@ -32,11 +32,11 @@ function app() {
     btnShowModal.click();
   });
 
-  txtDescribe.addEventListener("keyup", () => {
-    if (event.keyCode === 13) {
-      btnSaveModal.click();
-    }
-  });
+  //   txtDescribe.addEventListener("keyup", () => {
+  //     if (event.keyCode === 13) {
+  //       btnSaveModal.click();
+  //     }
+  //   });
 
   const createMarker = (describe, name) => {
     if (name && name.length <= nameLimit) {
