@@ -27,7 +27,6 @@ function app() {
     const name = txtName.value;
     const describe = txtDescribe.value;
 
-    console.log(name, describe);
     createMarker(describe, name);
     btnShowModal.click();
   });
@@ -58,9 +57,7 @@ function app() {
         // this function will set draged marker coord into setUp coord
         getMarkerCoord(setUp.myMarkers[i]);
         // now setUp coord are actual draged one
-        console.log(setUp);
         // get into right td in table to reload it
-        console.log(table.childNodes[3].childNodes[1].innerText);
         // finally reload text content of the table
         table.childNodes[i + 3].childNodes[1].innerText = setUp.myLongitude;
         table.childNodes[i + 3].childNodes[2].innerText = setUp.myLatitude;
@@ -119,7 +116,6 @@ function app() {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-    console.log(setUp);
     //  add marker on map LISTENER
     map.on("click", e => {
       btnShowModal.click();
@@ -128,7 +124,6 @@ function app() {
   };
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition, showPosition);
-    console.log(setUp);
   } else if (map == undefined) {
     map = L.map("mapid", {
       minZoom: 4
@@ -138,7 +133,6 @@ function app() {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-    console.log(setUp);
     //  add marker on map LISTENER
     map.on("click", e => {
       btnShowModal.click();
